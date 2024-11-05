@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Redimensionable</title>
+    <link rel="stylesheet" href="cargos.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Gestor de Cargos</h1>
+        <div class="actions">
+            <button id="addButton" class="btn add-btn">Añadir</button>
+            <input type="text" id="searchInput" placeholder="Buscar...">
+        
+            <label for="yearSelect">Año:</label>
+            <select id="yearSelect">
+                <option value=""></option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select>
+        
+            <label for="monthSelect">Mes:</label>
+            <select id="monthSelect">
+                <option value=""></option>
+                <option value="01">Enero</option>
+                <option value="02">Febrero</option>
+                <option value="03">Marzo</option>
+                <option value="04">Abril</option>
+                <option value="05">Mayo</option>
+                <option value="06">Junio</option>
+                <option value="07">Julio</option>
+                <option value="08">Agosto</option>
+                <option value="09">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+        
+            <label for="daySelect">Día:</label>
+            <select id="daySelect">
+                <option value=""></option>
+                <script>
+                    for (let i = 1; i <= 31; i++) {
+                        document.write(`<option value="${i < 10 ? '0' : ''}${i}">${i}</option>`);
+                    }
+                </script>
+            </select>
+
+            <label for="statusSelect">Estado:</label>
+            <select id="statusSelect">
+                <option value=""></option>
+                <option value="agendado">Agendado</option>
+                <option value="cotizacionPendiente">Cotización Pendiente</option>
+                <option value="cargado">Cargado</option>
+                <option value="actualizarPrecio">Actualizar Precio</option>
+                <option value="cargoPendiente">Cargo Pendiente</option>
+                <option value="codigoPendiente">Código Pendiente</option>
+                <option value="cuentaCerrada">Cuenta Cerrada</option>
+            </select>
+
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="col-1"><input type="checkbox" id="selectAll" onclick="toggleSelectAll(this)"></th>
+                        <th class="col-2">ID</th>
+                        <th class="col-3">Ingreso</th>
+                        <th class="col-4">Atributo</th>
+                        <th class="col-5">Previsión</th>
+                        <th class="col-6">Admisión</th>
+                        <th class="col-7">Nombre Paciente</th>
+                        <th class="col-8">Médico</th>
+                        <th class="col-9">Fecha Cx</th>
+                        <th class="col-10">Proveedor</th>
+                        <th class="col-11">Estado</th>
+                        <th class="col-12">Fecha Cargo</th>
+                        <th class="col-13">Informe</th>
+                        <th class="col-14">Costo pendiente</th>
+                        <th class="col-15">Costo cotización</th>
+                        <th class="col-16">Acciones</th> 
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Aquí se añadirán las filas dinámicamente -->
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button id="prevPage"><<</button>
+                <span id="pageInfo">Página 1 de 1</span>
+                <button id="nextPage">>></button>
+            </div>
+        </div>
+
+        <!-- Botones para importar y exportar -->
+        <div class="export-import-buttons">
+            <button id="exportButton" class="btn export-btn">Exportar</button>
+            <input type="file" id="importInput" class="import-btn" accept=".xlsx" style="display:none;">
+            <button id="importButton" class="btn import-btn" onclick="document.getElementById('importInput').click();">Importar</button>
+        </div>
+    </div>
+
+   <!-- Formulario para añadir Cargo -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModal">&times;</span>
+        <h2>Añadir Cargo</h2>
+        <form id="addForm" class="form-grid">
+            <div>
+                <label for="fechaIngresoInput">Fecha Ingreso:</label>
+                <input type="date" id="fechaIngresoInput" required>
+            </div>
+
+            <div>
+                <label for="atributoInput">Atributo:</label>
+                <select id="atributoInput" required>
+                    <option value="implantes">Implantes</option>
+                    <option value="consignacion">Consignación</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="previsionInput">Previsión:</label>
+                <input type="text" id="previsionInput" required>
+            </div>
+
+            <div>
+                <label for="admissionInput">Admisión:</label>
+                <input type="text" id="admissionInput" required>
+            </div>
+
+            <div>
+                <label for="pacienteInput">Paciente:</label>
+                <input type="text" id="pacienteInput" required>
+            </div>
+
+            <div>
+                <label for="doctorInput">Médico:</label>
+                <input type="text" id="doctorInput" required>
+            </div>
+
+            <div>
+                <label for="dateInput">Fecha CX:</label>
+                <input type="date" id="dateInput" required>
+            </div>
+            
+            <div>
+                <label for="proveedorInput">Proveedor:</label>
+                <input type="text" id="proveedorInput" required>
+            </div>
+
+            <div>
+                <label for="estadoInput">Estado:</label>
+                <select id="estadoInput" required>
+                    <option value="agendado">Agendado</option>
+                    <option value="cotizacionPendiente">Cotización Pendiente</option>
+                    <option value="cargado">Cargado</option>
+                    <option value="actualizarPrecio">Actualizar Precio</option>
+                    <option value="cargoPendiente">Cargo Pendiente</option>
+                    <option value="codigoPendiente">Código Pendiente</option>
+                    <option value="cuentaCerrada">Cuenta Cerrada</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dateCargoInput">Fecha Cargo:</label>
+                <input type="date" id="dateCargoInput" required>
+            </div>
+
+            <div>
+                <label for="informeInput">Informe:</label>
+                <select id="informeInput" required>
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                    <option value="x">X</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="costoPendienteInput">Costo Pendiente:</label>
+                <input type="text" id="costoPendienteInput" required oninput="formatCurrency(this)">
+            </div>
+
+            <div>
+                <label for="costoCotizacionInput">Costo Cotización:</label>
+                <input type="text" id="costoCotizacionInput" required oninput="formatCurrency(this)">
+            </div>
+
+            <button type="submit" class="btn save-btn">Guardar</button>
+        </form>
+    </div>
+</div>
+
+<!-- Formulario para modificar admisión -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeEditModal">&times;</span>
+        <h2>Modificar Datos</h2>
+        <form id="editForm" class="form-grid">
+            <div>
+                <label for="fechaIngresoEditInput">Fecha Ingreso:</label>
+                <input type="date" id="fechaIngresoEditInput" required>
+            </div>
+
+            <div>
+                <label for="atributoEditInput">Atributo:</label>
+                <select id="atributoEditInput" required>
+                    <option value="implantes">Implantes</option>
+                    <option value="consignacion">Consignación</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="previsionEditInput">Previsión:</label>
+                <input type="text" id="previsionEditInput" required>
+            </div>
+
+            <div>
+                <label for="admissionEditInput">Admisión:</label>
+                <input type="text" id="admissionEditInput" required>
+            </div>
+
+            <div>
+                <label for="pacienteEditInput">Paciente:</label>
+                <input type="text" id="pacienteEditInput" required>
+            </div>
+
+            <div>
+                <label for="doctorEditInput">Médico:</label>
+                <input type="text" id="doctorEditInput" required>
+            </div>
+
+            <div>
+                <label for="dateEditInput">Fecha CX:</label>
+                <input type="date" id="dateEditInput" required>
+            </div>
+            
+            <div>
+                <label for="proveedorEditInput">Proveedor:</label>
+                <input type="text" id="proveedorEditInput" required>
+            </div>
+
+            <div>
+                <label for="estadoEditInput">Estado:</label>
+                <select id="estadoEditInput" required>
+                    <option value="agendado">Agendado</option>
+                    <option value="cotizacionPendiente">Cotización Pendiente</option>
+                    <option value="cargado">Cargado</option>
+                    <option value="actualizarPrecio">Actualizar Precio</option>
+                    <option value="cargoPendiente">Cargo Pendiente</option>
+                    <option value="codigoPendiente">Código Pendiente</option>
+                    <option value="cuentaCerrada">Cuenta Cerrada</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dateCargoEditInput">Fecha Cargo:</label>
+                <input type="date" id="dateCargoEditInput" required>
+            </div>
+
+            <div>
+                <label for="informeEditInput">Informe:</label>
+                <select id="informeEditInput" required>
+                    <option value="si">Si</option>
+                    <option value="no">No</option>
+                    <option value="x">X</option>
+                </select>
+            </div>
+            
+            <div>
+                <label for="costoPendienteEditInput">Costo Pendiente:</label>
+                <input type="text" id="costoPendienteEditInput" required oninput="formatCurrency(this)">
+            </div>
+
+            <div>
+                <label for="costoCotizacionEditInput">Costo Cotización:</label>
+                <input type="text" id="costoCotizacionEditInput" required oninput="formatCurrency(this)">
+            </div>
+
+            <button type="submit" class="btn save-btn">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+
+    <!-- Formulario para confirmar eliminación -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeDeleteModal">&times;</span>
+            <h2><i class='bx bxs-error' style="color: #e74c3c;"></i> Eliminar Datos</h2>
+            <p>¿Estás seguro de que deseas eliminar los datos?</p>
+            <button id="confirmDeleteButton" class="btn delete-btn">Eliminar</button>
+            <button id="cancelDeleteButton" class="btn cancel-btn" onclick="closeModal('deleteModal')">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal de información --> 
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeInfoModal">&times;</span>
+            <h2><i class='bx bxs-info-circle' style="color: #3498db;"></i> Información</h2>
+            <p>Datos eliminados con éxito.</p>
+            <button id="closeInfoButton" class="btn close-btn">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="cargos.js"></script>
+    <script src="filtrarcargos.js"></script>
+    <script src="formato.js"></script>
+    <script src="importar.js"></script>
+</body>
+</html>

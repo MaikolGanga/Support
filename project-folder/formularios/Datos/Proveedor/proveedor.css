@@ -1,0 +1,257 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 28px;
+}
+
+.actions {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 10px;
+    gap: 10px; /* Ajusta el valor según sea necesario */
+}
+
+#searchInput {
+    padding: 10px;
+    width: 200px;
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+    max-width: 1000px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #ebebeb;
+    color: rgb(0, 0, 0);
+    padding: 8px;
+    text-align: left; /* Alinea el texto a la izquierda */
+    font-size: 14px;
+}
+
+tr {
+    height: 30px; /* Ajusta la altura según tus necesidades */
+    transition: background-color 0.3s ease;
+}
+
+tr:hover {
+    background-color: #835050;
+}
+
+td {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 5px; /* Reduce el padding para filas más compactas */
+}
+
+th::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    cursor: col-resize;
+}
+
+/* Estilos del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* Centrado en la pantalla */
+    padding: 20px;
+    border-radius: 5px; /* Bordes redondeados */
+    width: 400px; /* Ancho del modal */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    margin-top: 0; /* Sin margen superior */
+}
+
+label {
+    display: block; /* Cada etiqueta en una nueva línea */
+    margin-bottom: 5px; /* Espacio debajo de la etiqueta */
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px; /* Espacio interno */
+    margin-bottom: 15px; /* Espacio debajo del campo */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho */
+}
+
+/* Cambia el color del borde al enfocar */
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border: 2px solid #007bff; /* Cambia el color a un verde más brillante */
+    outline: none; /* Elimina el contorno predeterminado */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Añade un brillo alrededor del borde */
+}
+
+/* Estilos para los botones */
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer;
+}
+
+.add-btn {
+    background-color: #007bff; /* Color del botón Añadir */
+    color: white; /* Color del texto */
+    padding: 20px 20px; /* Ajusta el espacio interno (arriba-abajo, izquierda-derecha) */
+    font-size: 12px; /* Cambia el tamaño del texto */
+    border: none; /* Opcional: elimina el borde del botón */
+    border-radius: 5px; /* Opcional: agrega esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.add-btn:hover {
+    background-color: #0056b3; /* Color al pasar el mouse */
+}
+
+.save-btn {
+    background-color: #4CAF50; /* Color del botón Guardar */
+    color: white; /* Color del texto */
+}
+
+.save-btn:hover {
+    background-color: #45a049; /* Color al pasar el mouse */
+}
+
+/* Estilos para el botón de eliminar */
+.delete-btn {
+    background-color: #e74c3c; /* Color del botón Eliminar */
+    color: white; /* Color del texto */
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Color al pasar el mouse */
+}
+
+.cancel-btn {
+    background-color: #95a5a6; /* Color del botón Cancelar */
+    color: white; /* Color del texto */
+}
+
+.cancel-btn:hover {
+    background-color: #7f8c8d; /* Color al pasar el mouse */
+}
+
+.edit-icon, .delete-icon {
+    font-size: 20px; /* Tamaño del icono */
+    margin-right: 10px; /* Espacio entre iconos */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    color: #4CAF50; /* Color del icono de editar */
+}
+
+.delete-icon {
+    color: #f44336; /* Color del icono de eliminar */
+}
+
+.edit-icon:hover, .delete-icon:hover {
+    opacity: 0.7; /* Efecto de hover */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.export-import-buttons {
+    margin: 20px 0; /* Espaciado opcional */
+}
+
+.export-btn {
+    background-color: #ffffff; /* Color de fondo para el botón de exportar */
+    color: #007bff; /* Color del texto */
+    border: 2px solid #007bff; /* Borde azul para el botón de exportar */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centrar texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Para que el botón se muestre en línea */
+    margin: 4px 2px; /* Espaciado entre botones */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Añade un brillo alrededor del borde */
+}
+
+.import-btn {
+    background-color: #ffffff; /* Color de fondo para el botón de importar */
+    color: #007bff; /* Color del texto */
+    border: 2px solid #007bff; /* Borde azul para el botón de importar */
+    padding: 10px 20px; /* Espaciado interno */
+    text-align: center; /* Centrar texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Para que el botón se muestre en línea */
+    margin: 4px 2px; /* Espaciado entre botones */
+    cursor: pointer; /* Cambiar cursor al pasar */
+    border-radius: 5px; /* Bordes redondeados */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Añade un brillo alrededor del borde */
+}
+
+/* Estilos opcionales para efectos al pasar el ratón */
+.export-btn:hover, .import-btn:hover {
+    opacity: 0.8; /* Efecto de opacidad al pasar el ratón */
+}

@@ -1,0 +1,62 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 20px; /* Tamaño de fuente del body */
+}
+
+.container {
+    width: 100%; /* Cambia a 100% para ocupar todo el ancho disponible */
+    max-width: 1200px; /* Cambia el tamaño máximo */
+    margin: 0 auto; /* Elimina el margen superior */
+    padding: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    color: #007bff;
+    font-size: 4em; /* Tamaño del encabezado */
+}
+
+p {
+    font-size: 1em; /* Tamaño del párrafo */
+    color: #000000;
+}
+
+.date-container {
+    padding: 20px;
+
+    border-radius: 15px; /* Bordes más redondeados */
+    margin-top: 20px; /* Margen superior */
+    text-align: center;
+    color: #007bff; /* Color de texto blanco */
+    transition: transform 0.3s ease; /* Efecto de transición */
+}
+
+
+.date-container h1 {
+    font-size: 2.5em; /* Tamaño del encabezado */
+    margin-bottom: 10px; /* Margen inferior */
+    color: #f00000;
+}
+
+#currentDate {
+    font-size: 2em; /* Tamaño del texto de fecha y hora */
+    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada */
+    letter-spacing: 2px; /* Espaciado entre letras */
+    background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    color: #f00000;
+    padding: 15px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+footer {
+    font-size: 12px; /* Tamaño del párrafo */
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;  /* Hace que el footer esté fijo */
+    bottom: 0;        /* Posiciona el footer en la parte inferior */
+    left: 0;          /* Alinea a la izquierda */
+    width: 100%;      /* Ancho completo */
+}

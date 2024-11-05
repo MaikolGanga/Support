@@ -1,0 +1,119 @@
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif; /* Fuente principal */
+    background-color: #f1f0f6; /* Color de fondo modificado */
+    display: flex; /* Usar flexbox para centrar el contenido */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    min-height: 100vh; /* Ocupar al menos toda la altura de la ventana */
+    margin: 0; /* Sin márgenes */
+    overflow: hidden; /* Evitar barras de desplazamiento */
+}
+
+/* Contenedor del formulario de inicio de sesión */
+.login-container {
+    background: white; /* Fondo blanco */
+    padding: 20px; /* Espaciado interno reducido */
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Sombra más profunda */
+    width: 90%; /* Ancho del 90% del contenedor en pantallas pequeñas */
+    max-width: 800px; /* Ancho máximo para evitar que sea demasiado ancho */
+    max-height: 90vh; /* Máxima altura para que no sobrepase la pantalla */
+    overflow-y: auto; /* Permitir desplazamiento vertical si es necesario */
+    text-align: center; /* Texto centrado */
+    transition: transform 0.3s; /* Transición suave para transformaciones */
+    margin: 20px; /* Espacio adicional alrededor del contenedor */
+}
+
+
+/* Estilo del encabezado */
+.header {
+    margin-bottom: 20px; /* Espacio debajo del encabezado */
+}
+
+.header .logo {
+    width: 100px; /* Ajusta el tamaño del logo */
+    margin-bottom: 10px; /* Espacio debajo del logo */
+}
+
+.header h1 {
+    color: #007bff; /* Color del texto */
+    font-size: 42px; /* Tamaño de fuente más grande */
+}
+
+h1 {
+    color: #333; /* Color del texto */
+    font-size: 24px; /* Tamaño de fuente más grande */
+}
+
+/* Estilo de los divs que contienen los campos del formulario */
+div {
+    margin-bottom: 15px; /* Espacio debajo de cada div */
+}
+
+/* Etiquetas de los campos de entrada */
+label {
+    display: block; /* Mostrar como bloque */
+    margin-bottom: 5px; /* Espacio debajo de la etiqueta */
+    color: #555; /* Color del texto */
+    font-weight: bold; /* Negrita para mayor énfasis */
+}
+
+/* Estilo de los campos de entrada */
+input {
+    width: 100%; /* Ancho completo del contenedor */
+    padding: 12px; /* Espaciado interno */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluir padding y borde en el tamaño total */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+/* Estilo del campo de entrada cuando está enfocado */
+input:focus {
+    border-color: #007bff; /* Cambiar color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(102, 176, 255, 0.5); /* Sombra suave al enfocar */
+    outline: none; /* Sin contorno por defecto */
+}
+
+/* Estilo del botón */
+button {
+    width: 100%; /* Ancho completo del contenedor */
+    padding: 12px; /* Espaciado interno */
+    background-color: #007bff; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-size: 16px; /* Tamaño de la fuente */
+    transition: background-color 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+/* Estilo del botón al pasar el cursor */
+button:hover {
+    background-color: #2e69a8d8; /* Cambiar color de fondo al pasar el cursor */
+    transform: translateY(-2px); /* Elevar ligeramente el botón */
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 400px) {
+    .login-container {
+        width: 90%; /* Hacer el contenedor un 90% del ancho en pantallas pequeñas */
+    }
+
+    .header .logo {
+        width: 60px; /* Ajustar el tamaño del logo en pantallas pequeñas */
+    }
+}
+
+/* Estilo del logo */
+.logo {
+    width: 80px; /* Tamaño inicial del logo */
+    transition: transform 0.3s ease; /* Transición suave para el cambio de tamaño */
+}
+
+/* Efecto al pasar el mouse sobre el logo */
+.logo:hover {
+    transform: scale(1.1); /* Aumenta el tamaño al 120% */
+}
+

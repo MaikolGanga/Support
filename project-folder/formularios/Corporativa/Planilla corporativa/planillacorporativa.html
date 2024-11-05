@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Datos</title>
+
+    <!-- Biblioteca para XLSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="planillacorporativa.css">
+
+    <!-- Para la compatibilidad de los campos de fecha -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <!-- DataTables CSS y JS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Tabla de Datos</h1>
+
+    <!-- Filtros -->
+    <div class="filters">
+        <div class="filter-group">
+            <label for="search-paciente">Buscar por paciente</label>
+            <input type="text" id="search-paciente" placeholder="Buscar por paciente...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-fecha-desde">Fecha desde</label>
+            <input type="text" id="search-fecha-desde" placeholder="Selecciona la fecha desde...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-fecha-hasta">Fecha hasta</label>
+            <input type="text" id="search-fecha-hasta" placeholder="Selecciona la fecha hasta...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-proveedor">Buscar por proveedor</label>
+            <input type="text" id="search-proveedor" placeholder="Buscar por proveedor...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-codigo">Buscar por código</label>
+            <input type="text" id="search-codigo" placeholder="Buscar por código...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-medico">Buscar por médico</label>
+            <input type="text" id="search-medico" placeholder="Buscar por médico...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-oc">Buscar por OC</label>
+            <input type="text" id="search-oc" placeholder="Buscar por OC...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-factura">Buscar por factura</label>
+            <input type="text" id="search-factura" placeholder="Buscar por factura...">
+        </div>
+
+        <div class="filter-group">
+            <label for="search-guia">Buscar por guía</label>
+            <input type="text" id="search-guia" placeholder="Buscar por guía...">
+        </div>
+    </div>
+
+    <!-- Botón para actualizar archivo -->
+    <div class="import-container">
+        <input type="file" id="import-file" style="display: none;" accept=".xlsx">
+        <button id="import-btn" title="Haz clic para actualizar la tabla con un archivo XLSX">Actualizar</button>
+    </div>
+
+    <!-- Mensaje de actualización -->
+    <div id="update-message" class="message" style="display: none; color: green; margin-top: 10px;">
+        Datos actualizados correctamente.
+    </div>
+
+    <!-- Tabla -->
+    <div class="table-container">
+        <table id="tabla" class="display">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Cadena</th>
+                    <th>ID_PACIENTE</th>
+                    <th>PACIENTE</th>
+                    <th>MEDICO</th>
+                    <th>FECHA_CIRUGIA</th>
+                    <th>PROVEEDOR</th>
+                    <th>CODIGO CLINICA</th>
+                    <th>CODIGO PROVEEDOR</th>
+                    <th>CANTIDAD</th>
+                    <th>PRECIO UNITARIO</th>
+                    <th>ATRIBUTO</th>
+                    <th>OC</th>
+                    <th>OC MONTO</th>
+                    <th>ESTADO</th>
+                    <th>FECHA RECEPCION</th>
+                    <th>FECHA CARGO</th>
+                    <th>NUMERO GUIA</th>
+                    <th>NUMERO FACTURA</th>
+                    <th>FECHA EMISION FACTURA</th>
+                    <th>FECHA DE INGRESO</th>
+                    <th>LOTE</th>
+                    <th>FECHA DE VENCIMIENTO</th>
+                    <th>Año</th>
+                    <th>Estado Oc</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Las filas de la tabla se insertan aquí -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="planillacorporativa.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/Mg.png" type="image/x-icon">
+    <title>Support Mg</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar">
+            <h2>
+                <img src="img/usuario.png" alt="Support" style="width: 40px; height: 40px; vertical-align: middle; filter: drop-shadow(0 0 2px #007bff);">
+                <span id="nombreUsuario" ></span>
+            </h2>
+            <a href="#" id="pagina-principal" class="button" data-target="project-folder/bienvenida.html">Página Principal</a>      
+            <div class="division">Implantes</div>
+            <ul>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="trauma">
+                        <i class='bx bx-plus-medical'></i> Trauma 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="trauma" style="display: none;">
+                        <li id="submenu_consumos"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bxs-plus-square'></i> Consumos</a></li>
+                        <li id="submenu_referencia"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-badge'></i> Referencia</a></li>
+                        <li id="submenu_sistemaMk"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-shape-polygon'></i> Sistema Mk</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="pacientes">
+                        <i class='bx bxs-user-detail'></i> Pacientes
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="pacientes" style="display: none;">
+                        <li id="submenu_pacientes"><a class="formulario-link" data-target="project-folder/formularios/Pacientes/pacientes/pacientes.html"><i class='bx bx-user-circle'></i> Pacientes</a></li>
+                        <li id="submenu_pacientes"><a class="formulario-link" data-target="project-folder/formularios/Pacientes/cargos/cargos.html"><i class='bx bx-user'></i> Cargos</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="datos">
+                        <i class='bx bx-folder'></i> Datos 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="datos" style="display: none;">
+                        <li id="submenu_proveedor"><a class="formulario-link" data-target="project-folder/formularios/Datos/Proveedor/proveedor.html"><i class='bx bxs-buildings'></i> Proveedor</a></li>
+                        <li id="submenu_medicos"><a class="formulario-link" data-target="project-folder/formularios/Datos/Médicos/medicos.html"><i class='bx bxs-face-mask'></i> Médicos</a></li>
+                        <li id="submenu_prevision"><a class="formulario-link" data-target="project-folder/formularios/Datos/Previsiones/previsiones.html"><i class='bx bxs-bookmark-heart'></i> Previsiones</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="corporativa">
+                        <i class='bx bx-briefcase'></i> Corporativa 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="corporativa" style="display: none;">
+                        <li id="submenu_planillacorporativa"><a class="formulario-link" data-target="project-folder/formularios/Corporativa/Planilla corporativa/planillacorporativa.html"><i class='bx bx-table'></i> Planilla corporativa</a></li>
+                        <li id="submenu_pendientes"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-receipt'></i> Facturas Pendientes</a></li>
+                        <li id="submenu_provisiones"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-line-chart-down'></i> Provisiones</a></li>
+                        <li id="submenu_outstandinginvoices"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-coin-stack'></i> Outstanding invoices</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="consignacion">
+                        <i class='bx bx-chart'></i> Consignación 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="consignacion" style="display: none;">
+                        <li id="submenu_consumosdeconsignacion"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-coin-stack'></i> Consumos de Consignación</a></li>
+                        <li id="submenu_codigosconsignados"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-coin-stack'></i> Códigos Consignados</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="division">Administrativa</div>
+            <ul>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="administrativa">
+                        <i class='bx bx-file'></i> Administrativa 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="administrativa" style="display: none;">
+                        <li id="submenu_entregainsumosdeaseo"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-microchip'></i> Entrega Insumos de Aseo</a></li>
+                        <li id="submenu_codigosinsumosdeaseo"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-microchip'></i> Códigos Insumos de Aseo</a></li>
+                        <li id="submenu_kardexinsumosdeaseo"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-microchip'></i> Kardex Insumos de Aseo</a></li>
+                        <li id="submenu_resumeninsumosdeaseo"><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-microchip'></i> Resumen Insumos de Aseo</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="xx1">
+                        <i class='bx bx-file'></i> xx1 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="xx1" style="display: none;">
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 1</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 2</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 3</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 4</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 5</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="xx2">
+                        <i class='bx bx-file'></i> xx2 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="xx2" style="display: none;">
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 1</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 2</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 3</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 4</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 5</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="division">Ajustes</div>
+            <ul>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="ajustes">
+                        <i class='bx bx-cog'></i> Usuario 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="ajustes" style="display: none;">
+                        <li><a class="formulario-link" data-target="project-folder/formularios/Ajustes/Admin/admin.html"><i class='bx bx-microchip'></i> Admin</a></li>
+                        <li><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-microchip'></i> User</a></li>
+                        <li><a class="formulario-link" data-target="ingresar archivo"><i class='bx bx-microchip'></i> Cambiar Contraseña</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="configuraciones">
+                        <i class='bx bxs-user-plus'></i> Configuraciones 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                    <ul class="submenu" id="configuraciones" style="display: none;">
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 1</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 2</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 3</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 4</a></li>
+                        <li><a href="#"><i class='bx bx-file'></i> Módulo 5</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="division">Salir</div>
+            <ul>
+                <li>
+                    <a href="#" class="toggle-submenu" data-toggle="salir" id="salir-btn">
+                        <i class='bx bx-log-out'></i> Salir 
+                        <i class='bx bx-chevron-right' style="margin-left: auto;"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div id="confirm-out" class="out" style="display: none;">
+            <div class="modal-out">
+                <span class="close">&times;</span>
+                <h2><i class='bx bx-error-circle' style="color: red;"></i> ¿Deseas salir?</h2>
+                <p>Confirma que deseas cerrar sesión.</p>
+                <button id="yes-btn">Sí</button>
+                <button id="no-btn">No</button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <iframe id="formulario-iframe" style="width: 100%; height: 100%; border: none;"></iframe>
+        </div>  
+    </div>
+    <script src="script/script.js"></script>
+    <script src="script/menu.js"></script>
+    <script src="script/salir.js"></script>
+    <script src="script/user.js"></script>   
+    <script src="script/abrirformularios.js"></script>   
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cargar la página principal por defecto
+            const iframe = document.getElementById("formulario-iframe");
+            iframe.src = "project-folder/bienvenida.html"; // Cambia esto si la ruta es diferente
+        });
+    </script>
+</body>
+</html>
